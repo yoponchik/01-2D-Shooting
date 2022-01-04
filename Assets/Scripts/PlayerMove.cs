@@ -31,6 +31,6 @@ public class PlayerMove : MonoBehaviour
         dir.Normalize();
 
         //move the GO
-        transform.position += Vector3.right * speed * Time.deltaTime;
+        transform.position += dir * speed * Time.deltaTime;
     }
 }
