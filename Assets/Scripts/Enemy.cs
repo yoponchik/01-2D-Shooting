@@ -7,25 +7,42 @@ public class Enemy : MonoBehaviour
 {
     public float speed = 5;
     Vector3 dir;
-    public GameObject body;
+    public GameObject enemyBody;
+    public GameObject explosionFactory;
+
 
     void Start()
     {
+      
+
         float result = Random.Range(0, 10);
         if (result < 3) {
             GameObject target = GameObject.Find("Player");
             dir = target.transform.position - transform.position;
             dir.Normalize();
-            body.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
+            enemyBody.transform.rotation = Quaternion.FromToRotation(Vector3.up, dir);
         }
         else {
             dir = Vector3.down;
-            body.transform.eulerAngles = new Vector3(0, 0, 100);
+            enemyBody.transform.eulerAngles = new Vector3(0, 0, 180);
         }
     }
 
     void Update()
     {
-        
+        transform.position += dir * speed * Time.deltaTime;
+    }
+
+    private void OnCollisionEnter(Collision other) {
+
+        if (other.gameObject.name.Contains("Bullet")){   //find the bullets
+            Destroy(other.gameObject); //destroy the bullets/    
+            Destroy(this.gameObject); //destroy the enemy   
+
+        }
+
+        else if (other.gameObject.name.Contains("Player")) {
+            Destroy(other.gameObject);
+        }
     }
 }
