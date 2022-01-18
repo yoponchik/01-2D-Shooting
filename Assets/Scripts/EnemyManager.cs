@@ -20,12 +20,13 @@ public class EnemyManager : MonoBehaviour
         if (currentTime > createTime) {   //if the currentTime elapses past the createTime
 
             currentTime = 0;              //reset currentTime
+                                          //otherwise the enemies will spawn in the same location and collide with each other
+                                          //which mean they'll destroy themselves
 
             GameObject enemy = Instantiate(enemyFactory);    //declare a new gameobject called enemy; instantiate the enemy
             enemy.transform.position = transform.position;   //give the enemy's position the same value as this GO
             enemy.transform.parent = enemyParent;            //make the enemy GO's parent enemyParent       
-                                                            //otherwise the enemies will spawn in the same location and collide with each other
-                                                            //which mean they'll destroy themselves
+                                                            
         }   
     }
 }
