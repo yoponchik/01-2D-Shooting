@@ -8,7 +8,7 @@ public class EnemyManager : MonoBehaviour
     public GameObject enemyFactory;
     public Transform enemyParent;
 
-    public float createTime;   //time to create the enemy
+    public float createTime = 1;   //time to create the enemy
     float currentTime;
     
 

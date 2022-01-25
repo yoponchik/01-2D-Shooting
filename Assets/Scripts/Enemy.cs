@@ -13,8 +13,6 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-      
-
         float result = Random.Range(0, 10);
         if (result < 3) {
             GameObject target = GameObject.Find("Player");
@@ -37,7 +35,13 @@ public class Enemy : MonoBehaviour
 
         if (other.gameObject.name.Contains("Bullet")){   //find the bullets
             Destroy(other.gameObject); //destroy the bullets/    
-            Destroy(this.gameObject); //destroy the enemy   
+            Destroy(this.gameObject); //destroy the enemy
+
+            GameObject GOScoreManager = GameObject.Find("ScoreManager");
+            ScoreManager sc = GOScoreManager.GetComponent<ScoreManager>();
+
+            sc.score++;
+            sc.textScore.text = "Score: " + sc.score.ToString();
 
         }
 
