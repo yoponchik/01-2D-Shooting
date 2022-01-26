@@ -5,21 +5,55 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-
-    public int score;
     public Text textScore;
+    private int score;
 
 
-    // Start is called before the first frame update
-    void Start()
+    #region Singleton
+    public static ScoreManager instance;
+
+    private void Awake()
     {
-        score = 0;
+        ScoreManager.instance = this;
+    }
+    #endregion Singleton
+
+
+    #region Regular Get-Set Functions
+    /*
+    public int GetScore(){
+        return score;
+    }
+
+    public void SetScore(int value){
+        score = value;
         textScore.text = "Score: " + score.ToString();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    */
+    #endregion Regular Get-Set Functions
+
+    #region Property
+
+    public int SCORE {
+
+        get { return score; }
+
+        set {
+            score = value;
+            textScore.text = "Score: " + score.ToString();
+        }
+
+    }
+
+    #endregion Property
+
+    void Start()
     {
-        
+        //SetScore(0);
+        SCORE = 0;
+
     }
 }
+

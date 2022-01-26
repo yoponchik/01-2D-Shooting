@@ -37,12 +37,12 @@ public class Enemy : MonoBehaviour
             Destroy(other.gameObject); //destroy the bullets/    
             Destroy(this.gameObject); //destroy the enemy
 
-            GameObject GOScoreManager = GameObject.Find("ScoreManager");
-            ScoreManager sc = GOScoreManager.GetComponent<ScoreManager>();
+            //GameObject GOScoreManager = GameObject.Find("ScoreManager");
+            //ScoreManager sc = GOScoreManager.GetComponent<ScoreManager>();
 
-            sc.score++;
-            sc.textScore.text = "Score: " + sc.score.ToString();
+            //sc.SetScore(sc.GetScore() + 1); //for using regular GetScore SetScore functions
 
+            ScoreManager.instance.SCORE++;                       //using property and Singleton
         }
 
         else if (other.gameObject.name.Contains("Player")) {
