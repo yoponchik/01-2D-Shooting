@@ -386,7 +386,6 @@ GameObject:
   - component: {fileID: 265890159}
   - component: {fileID: 265890158}
   - component: {fileID: 265890156}
-  - component: {fileID: 265890157}
   m_Layer: 5
   m_Name: Text Score
   m_TagString: Untagged
@@ -420,7 +419,7 @@ MonoBehaviour:
     m_FontStyle: 0
     m_BestFit: 1
     m_MinSize: 0
-    m_MaxSize: 86
+    m_MaxSize: 40
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -428,21 +427,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 'Score: 89898989898'
---- !u!114 &265890157
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 265890155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
-  m_EffectDistance: {x: 1, y: -1}
-  m_UseGraphicAlpha: 1
 --- !u!222 &265890158
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -467,7 +451,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 658.63153, y: -100}
+  m_AnchoredPosition: {x: 646.87, y: -100}
   m_SizeDelta: {x: 1244.463, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &481892544
@@ -1470,8 +1454,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b70b0f0f9a9cd4466ba355106bc06cca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 0
   textScore: {fileID: 265890156}
+  textHighScore: {fileID: 0}
 --- !u!4 &1977986953
 Transform:
   m_ObjectHideFlags: 0

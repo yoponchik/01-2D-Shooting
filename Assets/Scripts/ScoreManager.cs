@@ -5,10 +5,6 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public Text textScore;
-    private int score;
-
-
     #region Singleton
     public static ScoreManager instance;
 
@@ -17,6 +13,12 @@ public class ScoreManager : MonoBehaviour
         ScoreManager.instance = this;
     }
     #endregion Singleton
+
+    public Text textScore;
+    private int score;
+
+    public Text textHighScore;
+    private int highScore;
 
 
     #region Regular Get-Set Functions
@@ -34,7 +36,7 @@ public class ScoreManager : MonoBehaviour
     */
     #endregion Regular Get-Set Functions
 
-    #region Property
+    #region Property: Score
 
     public int SCORE {
 
@@ -43,17 +45,40 @@ public class ScoreManager : MonoBehaviour
         set {
             score = value;
             textScore.text = "Score: " + score.ToString();
+
+            if (score > highScore) {
+                HIGHSCORE = score;
+                PlayerPrefs.SetInt("HighScore", highScore);
+            }
         }
 
     }
 
-    #endregion Property
+    #endregion Property: Score
+
+    #region Property: High Score
+
+    public int HIGHSCORE
+    {
+
+        get { return highScore; }
+
+        set
+        {
+            highScore = value;
+            textHighScore.text = "High Score: " + highScore.ToString();
+        }
+
+    }
+
+    #endregion Property: High Score
+
 
     void Start()
     {
         //SetScore(0);
         SCORE = 0;
-
+        HIGHSCORE = PlayerPrefs.GetInt("HighScore", highScore);
     }
 }
 
