@@ -47,6 +47,8 @@ public class Enemy : MonoBehaviour
 
         else if (other.gameObject.name.Contains("Player")) {
             Destroy(other.gameObject);
+            GameManager.instance.gameOverUI.SetActive(true);
+            Time.timeScale = 0.2f;
         }
     }
 }

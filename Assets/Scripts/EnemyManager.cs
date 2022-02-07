@@ -22,11 +22,12 @@ public class EnemyManager : MonoBehaviour
             currentTime = 0;              //reset currentTime
                                           //otherwise the enemies will spawn in the same location and collide with each other
                                           //which mean they'll destroy themselves
+            if (!GameManager.instance.gameOverUI.activeSelf) {  //b/c when the player dies, we dont want to have an error where the enemy cant find the player.
+                GameObject enemy = Instantiate(enemyFactory);    //declare a new gameobject called enemy; instantiate the enemy
+                enemy.transform.position = transform.position;   //give the enemy's position the same value as this GO
+                enemy.transform.parent = enemyParent;            //make the enemy GO's parent enemyParent       
 
-            GameObject enemy = Instantiate(enemyFactory);    //declare a new gameobject called enemy; instantiate the enemy
-            enemy.transform.position = transform.position;   //give the enemy's position the same value as this GO
-            enemy.transform.parent = enemyParent;            //make the enemy GO's parent enemyParent       
-                                                            
+            }
         }   
     }
 }
