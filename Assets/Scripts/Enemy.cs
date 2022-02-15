@@ -5,14 +5,21 @@ using Random = UnityEngine.Random;
 
 public class Enemy : MonoBehaviour
 {
+    #region Declaration
+
     public float speed = 5;
     Vector3 dir;
     public GameObject enemyBody;
     public GameObject explosionFactory;
 
+    EnemyHP enemyHP;
+
+    #endregion Declaration
 
     void Start()
     {
+        enemyHP = GetComponent<EnemyHP>();
+
         float result = Random.Range(0, 10);
         if (result < 3) {
             GameObject target = GameObject.Find("Player");
@@ -33,19 +40,28 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
 
+        enemyHP.HP--; //if hit by anything, decrease health
+
         if (other.gameObject.name.Contains("Bullet")){   //find the bullets
             Destroy(other.gameObject); //destroy the bullets/    
-            Destroy(this.gameObject); //destroy the enemy
 
             //GameObject GOScoreManager = GameObject.Find("ScoreManager");
             //ScoreManager sc = GOScoreManager.GetComponent<ScoreManager>();
 
             //sc.SetScore(sc.GetScore() + 1); //for using regular GetScore SetScore functions
 
-            ScoreManager.instance.SCORE++;                       //using property and Singleton
+            //ScoreManager.instance.SCORE++;                       //using property and Singleton
         }
 
-        else if (other.gameObject.name.Contains("Player")) {
+        if (enemyHP.HP <= 0) {
+            if (other.gameObject.name.Containts("Bullet")) {
+                ScoreManager.instance.SCORE++;
+            }
+            Destroy(this.gameObject); //destroy the enemy
+        }
+
+        if (other.gameObject.name.Contains("Player")) {
+            //GameOver
             Destroy(other.gameObject);
             GameManager.instance.gameOverUI.SetActive(true);
             Time.timeScale = 0.2f;
