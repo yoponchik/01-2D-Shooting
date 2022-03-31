@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision other) {
 
+
         enemyHP.HP--; //if hit by anything, decrease health
 
         if (other.gameObject.CompareTag("Bullet")){   //find the bullets
@@ -57,6 +58,9 @@ public class Enemy : MonoBehaviour
             if (other.gameObject.name.Contains("Bullet")) {
                 ScoreManager.instance.SCORE++;
             }
+            GameObject explosion = Instantiate(explosionFactory);
+            explosion.transform.position = transform.position;
+
             Destroy(this.gameObject); //destroy the enemy
         }
 
