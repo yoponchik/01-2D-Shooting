@@ -22,7 +22,7 @@ public class EnemyHP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sliderHP.maxvalue = maxHP;
+        sliderHP.maxValue = maxHP;
         HP = maxHP;
         
     }
