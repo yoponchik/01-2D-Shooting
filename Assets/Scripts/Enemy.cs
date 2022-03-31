@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
         enemyHP.HP--; //if hit by anything, decrease health
 
-        if (other.gameObject.name.Contains("Bullet")){   //find the bullets
+        if (other.gameObject.CompareTag("Bullet")){   //find the bullets
             Destroy(other.gameObject); //destroy the bullets/    
 
             //GameObject GOScoreManager = GameObject.Find("ScoreManager");
@@ -54,13 +54,13 @@ public class Enemy : MonoBehaviour
         }
 
         if (enemyHP.HP <= 0) {
-            if (other.gameObject.name.Containts("Bullet")) {
+            if (other.gameObject.name.Contains("Bullet")) {
                 ScoreManager.instance.SCORE++;
             }
             Destroy(this.gameObject); //destroy the enemy
         }
 
-        if (other.gameObject.name.Contains("Player")) {
+        if (other.gameObject.CompareTag("Player")) {
             //GameOver
             Destroy(other.gameObject);
             GameManager.instance.gameOverUI.SetActive(true);
